@@ -1,22 +1,22 @@
-#AWS-backed HLS Video streaming service
+# AWS-backed HLS Video streaming service
 
 A simple HLS video stream service. Basically you can use that as a VOD service or as a live streaming service of file.
 
-###API
+### API
 --
-#####--->/registerScreening/:time/:movie
+##### --->/registerScreening/:time/:movie
 Program a screening of the file, returns the string to send to the video player
 bug here if you start watching the movie rightaway
 By the way it would be cool to have a standard wait thing fo users to wait
-#####-->/getFiles/:id/:urlMov(*)
+##### -->/getFiles/:id/:urlMov(*)
 to pass to the video player to get the movie the id is the ref of the screening
-#####-->/movieState/:movie'
+##### -->/movieState/:movie'
 Gets back the state of the movie, ie uploading, transcoding, ready..
-#####-->'/sign_s3'
+##### -->'/sign_s3'
 Sign a user uload to the input bucket
 
 
-###Flow
+### Flow
 
 * The user request an upload key
 * The server sends back an url for him to upload on the input bucket
@@ -24,7 +24,7 @@ Sign a user uload to the input bucket
 * When the admin requets a screening, a live descriptor is builded, this function returns an url
 * The video player then plays the live video if given the url
 
-###Needed Setup
+### Needed Setup
 
 * two S3 bucket, for input and transcoding output, with CORS setup right for the input one
 * one pipeline on aws-transcoder
